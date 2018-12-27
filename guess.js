@@ -26,6 +26,8 @@ var total = 0;
 
 const run = function(letter) {
     if ( ['d', 'D', 'f', 'F'].includes(letter) ) {
+        total++;
+
         letter = letter.toLowerCase();
         prediction = predict(letter);
         update(letter);
@@ -58,7 +60,7 @@ const predict = function(letter) {
     while ( test_seq !== '' ) {
         item = data[test_seq];
         if (item) {
-            weight = Math.abs(item.d-item.f)/(item.d+item.f)/(test_seq.length);
+            weight = Math.abs(item.d-item.f)/(item.d+item.f)/(Math.cbrt(test_seq.length));
             f_score += item.f * weight;
             d_score += item.d * weight;    
         }
@@ -76,7 +78,6 @@ const predict = function(letter) {
 const update = function(letter) {
     if (last_prediction !== '') {
         correct += last_prediction === letter ? 1 : 0;
-        total++;
         pct = Math.round(correct / total * 100);
         console.log(last_prediction === letter ? 'Correct' : 'Wrong');
         console.log(`Correct guesses: ${pct}%`);
@@ -92,8 +93,11 @@ const update = function(letter) {
         }
     
         rate = document.getElementById('rate');
-        rate.innerText=`${pct}%`;    
+        rate.innerText=`${pct}%`;  
     }
+
+    count = document.getElementById('count');
+    count.innerText=total;
 
     if (prediction !== '') {
         console.log(`Next input will be: ${prediction}`);

@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
         <script src='./guess.js'></script>
         <style>
             li {
@@ -14,6 +15,17 @@
             .incorrect {
                 background-color:#f99
             }
+            .buttons {
+                display: block;
+                width: 100%
+            }
+            .buttons button {
+                width: 20%;
+                margin: 20px;
+                padding-bottom: 20%;
+                min-height: 100px;
+                border-radius: 0;
+            }
         </style>
             <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130587746-1"></script>
@@ -26,13 +38,20 @@
         </script>
     </head>
     <body>
-        Press 'd' or 'f' as randomly as possible, and I'll predict your next move.
+        Press 'd' or 'f' (on keyboard or buttons) as randomly as possible, and I'll predict your next move.
         <br/>
         Note: If you view console, you can see the predictions before you press a key to verify nothing funny is going on.
         <br/>
         If you'd like to see the code, it is on <a href='https://github.com/rhenretta/guess'>Github</a>
+        <div class="count">
+            Selections made: <div id='count'></div>
+        </div>
         <div class='guess'>
             Current Success Rate: <div id='rate'></div>
+        </div>
+        <div class='buttons'>
+            <button onclick="run('d')">d</button>
+            <button onclick="run('f')">f</button>
         </div>
         <div class='hitory'>
             <ul id='history'></ul>
