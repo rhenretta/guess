@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script src='./guess.js'></script>
+        <style>
+            li {
+                display: block;
+                float: left;
+                clear: left;
+                padding: 3px;
+            }
+            .correct {
+                background-color:#0f0
+            }
+            .incorrect {
+                background-color:#f99
+            }
+        </style>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130587746-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-130587746-1');
+        </script>
+    </head>
+    <body>
+        Press 'd' or 'f' as randomly as possible, and I'll predict your next move.
+        <br/>
+        Note: If you view console, you can see the predictions before you press a key to verify nothing funny is going on.
+        <div class='guess'>
+            Current Success Rate: <div id='rate'></div>
+        </div>
+        <div class='hitory'>
+            <ul id='history'></ul>
+        </div>
+    </body>
+</html>
